@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Order a Diwali Gift · Memoir Made</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#16082b;--bg2:#4a0e2a;--gold:#ffc857;--orange:#ff8a1f;--text:#fff4e0;--line:rgba(255,200,87,.35);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% 0,var(--bg2),var(--bg1) 65%) fixed;color:var(--text);font-family:Poppins,system-ui,sans-serif;min-height:100%}
+.wrap{max-width:520px;margin:0 auto;padding:28px 18px 50px}
+h1,h2{font-family:'Playfair Display',serif;color:var(--gold);margin:0}
+h1{font-size:clamp(30px,8vw,40px);line-height:1.15;text-align:center}
+.brand{text-align:center;font-family:Caveat,cursive;font-size:24px;color:var(--orange)}
+.sub{text-align:center;font-weight:300;opacity:.85;margin:8px 0 18px}
+.price{display:flex;justify-content:center;gap:10px;align-items:baseline;margin:6px 0 18px}
+.price b{font-family:'Playfair Display',serif;font-size:44px;color:var(--gold)}
+.card{background:rgba(255,200,87,.08);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:16px}
+.card h2{font-size:20px;margin-bottom:12px}
+ul.inc{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-size:14px}
+label{display:block;font-size:13px;font-weight:500;margin:12px 0 5px;color:var(--gold)}
+label small{font-weight:300;color:var(--text);opacity:.7}
+input,textarea,select{width:100%;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--text);font:400 15px Poppins,sans-serif;padding:11px 12px}
+select option{color:#222}
+textarea{min-height:84px;resize:vertical}
+input::placeholder,textarea::placeholder{color:rgba(255,244,224,.4)}
+.chk{display:flex;gap:10px;align-items:center;margin-top:12px;font-size:14px}
+.chk input{width:20px;height:20px}
+.btn{display:inline-block;width:100%;text-align:center;text-decoration:none;background:linear-gradient(135deg,var(--gold),var(--orange));color:#3a1200;border:0;border-radius:999px;padding:14px;font:500 16px Poppins,sans-serif;cursor:pointer;margin-top:10px}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--gold)}
+#out{display:none}
+#msg{min-height:230px;font-size:13px}
+.err{color:#ff9a9a;font-size:13px;margin-top:10px;text-align:center;min-height:18px}
+.note{font-size:13px;opacity:.8;text-align:center;font-weight:300;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">Memoir Made</div>
+  <h1>Order a Diwali Gift 🪔</h1>
+  <p class="sub">A glowing, interactive surprise page made just for your person.</p>
+  <div class="price"><b>₹149</b><span>one gift page · delivered in 48 hours</span></div>
+
+  <div class="card">
+    <h2>What they will open</h2>
+    <ul class="inc">
+      <li>💌 A letter</li><li>📸 Photo memories</li>
+      <li>🏮 Wish lantern sky</li><li>🪔 Light the diyas</li>
+      <li>🎨 Draw a rangoli</li><li>🎁 Sweet surprise</li>
+      <li style="grid-column:1/-1">🎆 A full fireworks show with their name</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>About you &amp; them</h2>
+    <label>Their name *</label><input id="to" placeholder="Who is this gift for?">
+    <label>Your name *</label><input id="from" placeholder="Name shown as the sender">
+    <label>They are your…</label>
+    <select id="rel"><option>Partner</option><option>Best friend</option><option>Family member</option><option>Friend</option><option>Someone special</option></select>
+    <label>Your Instagram / WhatsApp *</label><input id="contact" placeholder="@handle or phone number">
+  </div>
+
+  <div class="card">
+    <h2>The words</h2>
+    <label>Opening title <small>(optional)</small></label><input id="head" placeholder="Happy Diwali!">
+    <label>Your letter</label>
+    <textarea id="letter" placeholder="Write what you want them to read…"></textarea>
+    <div class="chk"><input type="checkbox" id="wr"><label for="wr" style="margin:0;color:var(--text);font-weight:400">Write the letter for me</label></div>
+    <label>3 wishes for their lanterns</label>
+    <input id="w1" placeholder="Wish 1"><input id="w2" placeholder="Wish 2" style="margin-top:8px"><input id="w3" placeholder="Wish 3" style="margin-top:8px">
+    <label>Blessing after they light the diyas <small>(optional)</small></label>
+    <input id="bless" placeholder="Five lights for five blessings…">
+    <label>Final message <small>(shown at the end)</small></label>
+    <textarea id="fin" placeholder="A closing message from your heart"></textarea>
+  </div>
+
+  <div class="card">
+    <h2>Photos &amp; extras</h2>
+    <label>How many photos will you send? <small>(3 to 6 work best)</small></label>
+    <select id="np"><option>3</option><option>4</option><option>5</option><option>6</option></select>
+    <label>A short caption for each photo <small>(one per line, in order)</small></label>
+    <textarea id="caps" placeholder="Our first Diwali&#10;The day we laughed the most&#10;My favourite photo of us"></textarea>
+    <label>Sweet surprise coupon</label>
+    <input id="treat" placeholder="e.g. A box of mithai on me">
+    <label>Music link <small>(optional)</small></label><input id="music" placeholder="Direct audio link">
+    <label>Needed by <small>(date)</small></label><input id="by" placeholder="e.g. 8 Nov, evening">
+  </div>
+
+  <button class="btn" id="go">Create my order message</button>
+  <div class="err" id="err"></div>
+
+  <div class="card" id="out">
+    <h2>Send this to us</h2>
+    <p class="note" style="margin-top:0;text-align:left">1. Copy the message. 2. Open our Instagram DM and paste it. 3. Send your photos in the same chat. 4. Pay ₹149 once we confirm your order.</p>
+    <textarea id="msg" readonly></textarea>
+    <button class="btn" id="copy">Copy order message</button>
+    <a class="btn ghost" id="dm" href="https://ig.me/m/memoirmade.co" target="_blank" rel="noopener">Open Instagram DM @memoirmade.co</a>
+    <p class="note" id="ok"></p>
+  </div>
+  <p class="note">little moments, made memorable ✨</p>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+$('go').onclick=()=>{
+  const v=id=>$(id).value.trim();
+  if(!v('to')||!v('from')||!v('contact')){$('err').textContent='Please fill their name, your name and your contact.';return}
+  $('err').textContent='';
+  const wishes=['w1','w2','w3'].map(v).filter(Boolean).map((w,i)=>(i+1)+'. '+w).join('\n')||'(please write for me)';
+  const L=[
+    '🪔 MEMOIR MADE · Diwali Gift Order (₹149)','',
+    'For: '+v('to'),'From: '+v('from'),'They are my: '+$('rel').value,'My contact: '+v('contact'),'',
+    'Opening title: '+(v('head')||'Happy Diwali!'),'',
+    'Letter: '+($('wr').checked?'Please write it for me.\n':'')+(v('letter')||'(not provided)'),'',
+    'Lantern wishes:\n'+wishes,'',
+    'Diya blessing: '+(v('bless')||'(use default)'),
+    'Final message: '+(v('fin')||'(use default)'),
+    'Sweet surprise: '+(v('treat')||'(use default)'),'',
+    'Photos: sending '+$('np').value+' in this chat',
+    'Captions:\n'+(v('caps')||'(please add simple ones)'),'',
+    'Music link: '+(v('music')||'none'),
+    'Needed by: '+(v('by')||'within 48 hours')
+  ];
+  $('msg').value=L.join('\n');
+  $('out').style.display='block';
+  $('out').scrollIntoView({behavior:'smooth'});
+};
+$('copy').onclick=async()=>{
+  const t=$('msg');
+  try{await navigator.clipboard.writeText(t.value);$('ok').textContent='Copied! Now paste it in our DM ✨'}
+  catch(e){t.select();try{document.execCommand('copy');$('ok').textContent='Copied! Now paste it in our DM ✨'}catch(_){$('ok').textContent='Press and hold the message, then tap Copy.'}}
+};
+</script>
+</body>
+</html>
